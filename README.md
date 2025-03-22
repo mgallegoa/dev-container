@@ -1,5 +1,15 @@
 # dev-container
+
+               ███╗░░░███╗░█████╗░███╗░░██╗██╗░░░██╗███████╗██╗░░░░░
+               ████╗░████║██╔══██╗████╗░██║██║░░░██║██╔════╝██║░░░░░
+               ██╔████╔██║███████║██╔██╗██║██║░░░██║█████╗░░██║░░░░░
+               ██║╚██╔╝██║██╔══██║██║╚████║██║░░░██║██╔══╝░░██║░░░░░
+               ██║░╚═╝░██║██║░░██║██║░╚███║╚██████╔╝███████╗███████╗
+               ╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝░╚═════╝░╚══════╝╚══════╝
+
 My personal and custom dev-container, using https://github.com/devcontainers/ specification.
+
+Based on: docker pull debian:stable-slim
 
 ## Tools
 1. NeoVim
@@ -8,7 +18,16 @@ My personal and custom dev-container, using https://github.com/devcontainers/ sp
 4. SDKMan
 
 ## Base image
-This container use the slim version from Debian distro.
+✅  This container use the slim version from Debian distribution (docker pull debian:stable-slim).
+1. dpkg-dev
+2. build-essential
+3. ping (iputils-ping)
+4. wget
+5. curl
+6. ps (procps package)
+7. top/htop
+8. ip (iproute2)
+
 
 ### Core Packages Included in debian:slim
  | Package	Description	Purpose
@@ -52,7 +71,7 @@ This container use the slim version from Debian distro.
  | curl            |	Transfers data from URLs                |	curl -O example.com/file.zip        |	apt-get install curl
  | nano            |	Simple text editor                      |	nano file.txt                       |	apt-get install nano
  | vim-tiny        |	Minimal version of Vim                  |	vim file.txt                        |	apt-get install vim
- | ps (procps package)|	Lists running processes             |	ps aux                              |	apt-get install procps
+ | ps (procps package)|	Lists running processes                 |	ps aux                              |	apt-get install procps
  | top/htop        |	Monitors system processes               |	top to see CPU/memory usage         |	apt-get install htop
  | net-tools       |	Networking utilities (ifconfig, netstat)|	ifconfig to check IP address        |	apt-get install net-tools
  | traceroute      |	Traces network routes                   |	traceroute google.com               |	apt-get install traceroute

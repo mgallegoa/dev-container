@@ -1,0 +1,7 @@
+{
+  "name": "Manuel Custom Dev Container",
+  "build": {
+    "dockerfile": "./Dockerfile",
+    "context": "."
+  }
+}
