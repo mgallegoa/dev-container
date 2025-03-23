@@ -9,25 +9,35 @@
 
 My personal and custom dev-container, using https://github.com/devcontainers/ specification.
 
-Based on: docker pull debian:stable-slim
+Based on: 
+docker pull debian:bookworm-20250317 (117MB)
+
+> The image *docker pull debian:stable-slim* have 27MB but executing the *apt-get update* it is 94.4MB. So + 368MB for the needed tools, total size of the image 463MB.
+>
+> The image *docker pull debian:bookworm-20250317* executing the *apt-get update* it is 136MB
+
+## Run/build the container
+
+Build the image:
+> devcontainer build --image-name manuelarias/devcontainer:v1 --workspace-folder /media/manuel/Datos/mgallegoa/dev-container/
+
+Run the image:
+> docker run -d --name manuelarias-devcontainer-debian manuelarias/devcontainer:v1
+
+Build and run the image (not custom name for the image):
+> devcontainer up --workspace-folder /media/manuel/Datos/mgallegoa/dev-container/
+
+This will create the next directory and place the root files and folders:
+/workspaces/dev-container/
+
+Use the next command to connect to the new devcontainer:
+> docker exec -it container_id bash
 
 ## Tools
 1. NeoVim
 2. Tmux
 3. Node Version Manager NVM (node and typescript)
 4. SDKMan
-
-## Base image
-✅  This container use the slim version from Debian distribution (docker pull debian:stable-slim).
-1. dpkg-dev
-2. build-essential
-3. ping (iputils-ping)
-4. wget
-5. curl
-6. ps (procps package)
-7. top/htop
-8. ip (iproute2)
-
 
 ### Core Packages Included in debian:slim
  | Package	Description	Purpose
@@ -54,7 +64,7 @@ Based on: docker pull debian:stable-slim
  | libgcc1      |	GCC runtime library                 |   Needed for compiled programs
  |-------------------------------------------------------------------------------------------------------
 
-### Debian Packages Excluded in debian:slim
+### Debian Packages Excluded in debian:slim but included in debian image:
 
  | Tool            |	Description                             |	Usage                               |	Alternative / How to Install
 ---------------------------------------------------------------------------------------------------------------------------------------------------
