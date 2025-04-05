@@ -22,20 +22,20 @@ Build the image:
 > devcontainer build --image-name manuelarias/devcontainer:v1 --workspace-folder /media/manuel/Datos/mgallegoa/dev-container/
 
 Run the image:
-> docker run -d --name manuelarias-devcontainer-debian manuelarias/devcontainer:v1
+> docker run -d -v /media/manuel/Datos/mgallegoa/dev-container/:/workspace/dev-container/ --name manuelarias-devcontainer-debian manuelarias/devcontainer:v1
 
 Build and run the image (not custom name for the image):
-> devcontainer up --workspace-folder /media/manuel/Datos/mgallegoa/dev-container/
+> devcontainer up --build-no-cache --workspace-folder /media/manuel/Datos/mgallegoa/dev-container/
 
 This will create the next directory and place the root files and folders:
 /workspaces/dev-container/
 
 Use the next command to connect to the new devcontainer:
-> docker exec -it container_id bash
+> docker exec -it --user manuel container_id bash
 
 ## Tools
-1. NeoVim
-2. Tmux
+1. Tmux
+2. NeoVim
 3. Node Version Manager NVM (node and typescript)
 4. SDKMan
 

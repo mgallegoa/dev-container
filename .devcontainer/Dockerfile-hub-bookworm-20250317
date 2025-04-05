@@ -1,0 +1,12 @@
+FROM debian:bookworm-20250317
+
+RUN apt-get update
+
+CMD ["sleep", "infinity"]
+
+
+####
+,
+    "ghcr.io/duduribeiro/devcontainer-features/neovim:1": {
+      "version":"v0.10.2"
+    }
