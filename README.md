@@ -34,6 +34,7 @@ Use the next command to connect to the new devcontainer:
 > docker exec -it --user manuel container_id bash
 
 ## Tools
+1. .bashrc, Nerd Fonts and icons, Oh My Posh
 1. Tmux
 2. NeoVim
 3. Node Version Manager NVM (node and typescript)
