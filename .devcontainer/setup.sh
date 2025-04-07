@@ -5,6 +5,7 @@ set -euo pipefail
 
 declare -x PATH_DOTFILES="$HOME/dotfiles"
 declare -x PATH_DEVCONTAINER_SCRIPT="$PATH_DOTFILES/devContainer"
+declare -x PATH_INSTALL_OPT="/opt/manuel"
 
 echo "DEVCONTAINER_SCRIPT : Change to Home directory: $HOME" | tee -a $HOME/setup.log
 cd $HOME
@@ -47,5 +48,25 @@ $PATH_DEVCONTAINER_SCRIPT/setup-tmux.sh
 if [ $? -ne 0 ]; then
   echo "DEVCONTAINER_SCRIPT - TMUX: Error: setup-tmux.sh failed!" | tee -a $HOME/setup.log
 fi
+
+############# opt/manuel : Directory for software used for the user manuel
+echo "DEVCONTAINER_SCRIPT : Directory for optional software user manuel: $PATH_INSTALL_OPT" | tee -a $HOME/setup.log
+sudo mkdir $PATH_INSTALL_OPT
+echo "DEVCONTAINER_SCRIPT : Assign chown to directory to user manuel: $PATH_INSTALL_OPT" | tee -a $HOME/setup.log
+sudo chown -hR manuel:manuel $PATH_INSTALL_OPT
+
+################## TMUXIFIER
+echo "DEVCONTAINER_SCRIPT - TMUXIFIER: downloading the souurce code." | tee -a $HOME/setup.log
+git clone https://github.com/jimeh/tmuxifier.git $PATH_INSTALL_OPT/tmuxifier
+
+
+################## NVIM - version specifict
+echo "DEVCONTAINER_SCRIPT - NVIM: downloading prebuild nvim (not source code)." | tee -a $HOME/setup.log
+curl -Lo $PATH_INSTALL_OPT/nvim-linux64-v0.10.2.tar.gz https://github.com/neovim/neovim/releases/download/v0.10.2/nvim-linux64.tar.gz
+echo "DEVCONTAINER_SCRIPT - NVIM: Unzip in folder $PATH_INSTALL_OPT/nvim-linux64-v0.10.2" | tee -a $HOME/setup.log
+tar -xzf $PATH_INSTALL_OPT/nvim-linux64-v0.10.2.tar.gz -C $PATH_INSTALL_OPT/
+mv $PATH_INSTALL_OPT/nvim-linux64 $PATH_INSTALL_OPT/nvim-linux64-v0.10.2
+rm $PATH_INSTALL_OPT/nvim-linux64-v0.10.2.tar.gz
+
 
 echo "DEVCONTAINER_SCRIPT : Finished." | tee -a $HOME/setup.log

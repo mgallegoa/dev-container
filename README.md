@@ -9,9 +9,13 @@
 
 My personal and custom dev-container, using https://github.com/devcontainers/ specification.
 
+> [!TIP]
+> When finished the generation of the container, there is a log file in the /home/manuel/setup.log
+
 Based on: 
 docker pull debian:bookworm-20250317 (117MB)
 
+> [!NOTE]
 > The image *docker pull debian:stable-slim* have 27MB but executing the *apt-get update* it is 94.4MB. So + 368MB for the needed tools, total size of the image 463MB.
 >
 > The image *docker pull debian:bookworm-20250317* executing the *apt-get update* it is 136MB
@@ -31,6 +35,7 @@ This will create the next directory and place the root files and folders:
 /workspaces/dev-container/
 
 Use the next command to connect to the new devcontainer:
+> [!IMPORTANT]
 > docker exec -it --user manuel container_id bash
 
 ## Tools
@@ -94,3 +99,42 @@ Use the next command to connect to the new devcontainer:
  | adduser/useradd |	User account management                 |	adduser username                    |	apt-get install passwd|
  | less            |	Pager for viewing files                 |	less file.txt                       |	apt-get install less|
  | ip (iproute2)   |	Network configuration tool              |	ip addr show                        |	apt-get install iproute2|
+
+
+### Common Linux Folders Explained
+ | Folder   |	Description                             |	Common Uses|
+ | -------- | -----------------------------------       |   ------------------------    |
+ | /        |	Root of the filesystem                  |	Everything starts here|
+ | /bin     |	Essential user binaries (commands)      |	Commands like ls, cp, mv, used in single-user mode|
+ | /sbin    |	System binaries (mostly for root/admin) |	Tools like fsck, reboot, etc.|
+ | /usr     |	User-installed software and data        |	Subfolders like /usr/bin, /usr/lib, /usr/share contain main OS apps|
+ | /usr/local   |	Locally installed software          |	User-compiled packages outside system package manager|
+ | /opt     |	Optional software packages              |	3rd-party apps (e.g., VSCode, Chrome); versioned software directories|
+ | /etc     |	Configuration files                     |	System-wide config: /etc/passwd, /etc/hosts, /etc/network|
+ | /home    |	User home directories                   |	Personal files, shell config, downloads, etc. (/home/username)|
+ | /root    |	Root user’s home directory              |	Only accessible to root|
+ | /var     |	Variable files (data that changes)      |	Logs (/var/log), mail, spool, caches, etc.|
+ | /tmp     |	Temporary files (cleared at reboot)     |	Scratch space for apps or users|
+ | /dev     |	Device files                            |	Access to hardware like /dev/sda, /dev/null|
+ | /proc    |	Kernel and process info (virtual filesystem)|	Process stats, CPU/mem info, used by top, ps, etc.|
+ | /sys     |	System configuration info from kernel (virtual FS)|	Hardware details, tunables|
+ | /lib     |	Essential shared libraries              |	Needed for binaries in /bin and /sbin|
+ | /media   |	Mount points for removable media        |	USB drives, CDs auto-mounted here|
+ | /mnt     |	Temporary mount point for manual use    |	Admins manually mount disks like /mnt/disk1|
+ | /boot    |	Boot loader files                       |	Kernel images, GRUB config|
+ | /run     |	Runtime data for processes              |	PID files, sockets, system state during boot|
+ | /srv	    |   Service data                            |	Web, FTP, or other server-specific directories|
+
+
+### ✅ Most Common User-Accessible Ones:
+/home — your stuff
+
+/etc — system configs
+
+/opt — manually installed apps
+
+/usr/local — compiled software
+
+/var/log — logs
+
+/tmp - temporal files
