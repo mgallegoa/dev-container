@@ -38,10 +38,28 @@ Use the next command to connect to the new devcontainer:
 > [!IMPORTANT]
 > docker exec -it --user manuel container_id bash
 
+> [!IMPORTANT]
+> Lazy NeoVim - Afther instalation:
+> 1. Open neovim to auto-install the lazy plugins.
+> 2. Run Mason and install (i) the Language Servers LSP:
+>    2.1. css-lsp : vscode-css-languageservice
+>    2.2. eslint_d : eslint_d.js
+>    2.3. html-lsp : vscode-html-languageservice
+>    2.4. htmlhint : htmlhint.com
+>    2.5. jdtls : eclipse.jdt.ls
+>    2.6. js-debug-adapter : vscode-js-debug
+>    2.7. lua-language-server: lua-language-server
+>    2.8. prettierd: prettierd
+>    2.9. stylua : StyLua
+>    2.10 typescript-language-server : typescript-language-server
+> 3. For Java, install the java version (using SDKMan):
+>    sdk install java 21.0.6-tem
+
+
 ## Tools
 1. .bashrc, Nerd Fonts and icons, Oh My Posh
 1. Tmux
-2. NeoVim
+2. NeoVim (Require npm)
 3. Node Version Manager NVM (node and typescript)
 4. SDKMan
 

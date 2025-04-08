@@ -12,3 +12,5 @@ FROM mcr.microsoft.com/devcontainers/base:debian-12
 
 # Install fontconfig
 RUN apt-get update && apt-get install -y fontconfig && rm -rf /var/lib/apt/lists/*
+
+ENV DATA_GIT_PROJECTS_DIR="/home/manuel/mgallegoa"
