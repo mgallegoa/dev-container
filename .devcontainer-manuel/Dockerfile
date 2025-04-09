@@ -1,13 +1,4 @@
-# [Choice] Debian version (use bullseye on local arm64/Apple Silicon): bookworm, bullseye, buster
-#ARG VARIANT="bookworm-20250317"
-FROM mcr.microsoft.com/devcontainers/base:debian-12
-
-# [Optional] Uncomment this section to install additional OS packages.
-# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-#     && apt-get -y install --no-install-recommends <your-package-list-here>
-
-# Install X11 libraries to allow X11 forwarding with xhost +local
-# RUN apt-get update && apt-get install -y x11-apps libx11-6 libgl1 libxext6 libxrender1 libxrandr2 libxfixes3 libxcursor1 libxinerama1 libxi6
+FROM debian:bookworm-20250317
 
 ENV DATA_GIT_PROJECTS_DIR="/home/manuel/mgallegoa"
 
@@ -19,14 +10,13 @@ RUN apt-get update \
   && apt-get install -y fontconfig automake autoconf libtool pkg-config build-essential libevent-dev libncurses-dev bison \
   && rm -rf /var/lib/apt/lists/*
 
-
 # Create user 'manuel' with home directory
 RUN useradd -ms /bin/bash manuel \
   && usermod -aG sudo manuel \
   && echo "manuel ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # Copy setup into the container
-COPY setup.sh /home/manuel/setup.sh
+COPY .devcontainer/setup.sh /home/manuel/setup.sh
 
 # Make sure the setup is owned by 'manuel' and executable
 RUN chown manuel:manuel /home/manuel/setup.sh && \
@@ -37,3 +27,7 @@ USER manuel
 
 # Run the setup
 RUN /home/manuel/setup.sh
+
+# Set default shell when container starts (optional)
+CMD ["/bin/bash"]
+

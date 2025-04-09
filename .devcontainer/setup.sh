@@ -3,8 +3,7 @@
 # -e: Exit script on any error. -u: Treat unset variables as error. -o: Fail
 set -euo pipefail
 
-declare -x PATH_DOTFILES="$HOME/dotfiles"
-declare -x PATH_DEVCONTAINER_SCRIPT="$PATH_DOTFILES/devContainer"
+declare -x PATH_DEVCONTAINER_SCRIPT="$HOME/dotfiles/devContainer"
 
 echo "* DEVCONTAINER_SCRIPT : Cloning dot files repository in $HOME, and go to devContainer directory." | tee -a $HOME/setup.log
 cd $HOME

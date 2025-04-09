@@ -3,12 +3,5 @@
   "build": {
     "dockerfile": "./Dockerfile",
     "context": "."
-  },
-  "features": {
-    "ghcr.io/duduribeiro/devcontainer-features/tmux:1": {
-      "version":"3.4"
-    }
-  },
-  "remoteUser": "manuel",
-  "postCreateCommand":"./.devcontainer/setup.sh"
+  }
 }

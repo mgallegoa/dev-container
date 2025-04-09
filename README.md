@@ -7,7 +7,9 @@
                ██║░╚═╝░██║██║░░██║██║░╚███║╚██████╔╝███████╗███████╗
                ╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝░╚═════╝░╚══════╝╚══════╝
 
-My personal and custom dev-container, using https://github.com/devcontainers/ specification.
+My personal and custom dev-container:
+    1. Using https://github.com/devcontainers/ specification. The specification use the folder .devcontainer to build and run.
+    2. Using a Docker file to build the image.
 
 > [!TIP]
 > When finished the generation of the container, there is a log file in the /home/manuel/setup.log
@@ -20,13 +22,24 @@ docker pull debian:bookworm-20250317 (117MB)
 >
 > The image *docker pull debian:bookworm-20250317* executing the *apt-get update* it is 136MB
 
-## Run/build the container
+## Tools
+1. .bashrc, Nerd Fonts and icons, Oh My Posh
+2. Tmux
+3. Node Version Manager NVM (node and typescript)
+4. SDKMan
+5. NeoVim (Require npm)
+
+## Build/Run the container devContainer specification, using devContainer CLI
+
+npm i -g @devcontainers/cli
 
 Build the image:
 > devcontainer build --image-name manuelarias/devcontainer:v1 --workspace-folder /media/manuel/Datos/mgallegoa/dev-container/
 
 Run the image:
-> docker run -d -v /media/manuel/Datos/mgallegoa/dev-container/:/workspace/dev-container/ --name manuelarias-devcontainer-debian manuelarias/devcontainer:v1
+> docker run -it -d -v /home/dockremap/:/workspace/dev-container/ --name manuel-dev-container-spec manuelarias/dev-container-spec:v1 bash -c ' echo "Container started"  trap "exit 0" 15  exec "$@"
+  while sleep 1 & wait $!; do :; done
+'
 
 Build and run the image (not custom name for the image):
 > devcontainer up --build-no-cache --workspace-folder /media/manuel/Datos/mgallegoa/dev-container/
@@ -34,13 +47,27 @@ Build and run the image (not custom name for the image):
 This will create the next directory and place the root files and folders:
 /workspaces/dev-container/
 
-Use the next command to connect to the new devcontainer:
 > [!IMPORTANT]
-> docker exec -it --user manuel container_id bash
+> Use the next command to connect to the new devcontainer:
+> docker exec -it --user manuel manuel-dev-container-spec bash
+
+
+## Build/Run the container only from Dockerfile (not use the devContainer specification)
+
+Use the .devcontainer-manuel/Dockerfile to build the image.
+Build the image:
+> docker build -t manuelarias/devcontainer:v1 -f .devcontainer-manuel/Dockerfile .
+
+Run the image:
+> docker run -d --name rest-api-node
+
+
 
 > [!IMPORTANT]
+>
 > Lazy NeoVim - Afther instalation:
-> 1. Open neovim to auto-install the lazy plugins.
+> 1. Open neovim to auto-install the lazy plugins or run the command:
+>    nvim --headless "+Lazy! sync" +qa
 > 2. Run Mason and install (i) the Language Servers LSP:
 >    2.1. css-lsp : vscode-css-languageservice
 >    2.2. eslint_d : eslint_d.js
@@ -55,13 +82,6 @@ Use the next command to connect to the new devcontainer:
 > 3. For Java, install the java version (using SDKMan):
 >    sdk install java 21.0.6-tem
 
-
-## Tools
-1. .bashrc, Nerd Fonts and icons, Oh My Posh
-1. Tmux
-2. NeoVim (Require npm)
-3. Node Version Manager NVM (node and typescript)
-4. SDKMan
 
 ### Core Packages Included in debian:slim
  | Package	    | Description	                        |   Purpose                                         |
