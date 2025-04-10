@@ -47,7 +47,7 @@ Build and run the image (not custom name for the image):
 This will create the next directory and place the root files and folders:
 /workspaces/dev-container/
 
-> [!IMPORTANT]
+Connect to the running container:
 > Use the next command to connect to the new devcontainer:
 > docker exec -it --user manuel manuel-dev-container-spec bash
 
@@ -64,6 +64,9 @@ Run the image:
   echo "Container started"  trap "exit 0" 15  exec "$@"
   while sleep 1 & wait $!; do :; done
 '
+
+Connect to the running container:
+> docker exec -it --user manuel manuel-dev-container bash
 
 
 > [!IMPORTANT]
