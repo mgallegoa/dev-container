@@ -56,11 +56,14 @@ This will create the next directory and place the root files and folders:
 
 Use the .devcontainer-manuel/Dockerfile to build the image.
 Build the image:
-> docker build -t manuelarias/devcontainer:v1 -f .devcontainer-manuel/Dockerfile .
+> docker build --no-cache -t manuelarias/dev-container:v1 -f .devcontainer-manuel/Dockerfile .
 
 Run the image:
-> docker run -d --name rest-api-node
-
+> docker run -it -d -v /home/dockremap/:/home/manuel/mgallegoa/ --name manuel-dev-container manuelarias/dev-container:v1 bash -c '
+  nvim --headless "+Lazy! sync" +qa  
+  echo "Container started"  trap "exit 0" 15  exec "$@"
+  while sleep 1 & wait $!; do :; done
+'
 
 
 > [!IMPORTANT]
