@@ -37,7 +37,7 @@ Build the image:
 > devcontainer build --image-name manuelarias/devcontainer:v1 --workspace-folder /media/manuel/Datos/mgallegoa/dev-container/
 
 Run the image:
-> docker run -it -d -v /home/dockremap/:/workspace/dev-container/ --name manuel-dev-container-spec manuelarias/dev-container-spec:v1 bash -c ' echo "Container started"  trap "exit 0" 15  exec "$@"
+> docker run -it -d -v /media/manuel/Datos/mgallegoa/:/home/manuel/mgallegoa/ --name manuel-dev-container-spec manuelarias/dev-container-spec:v1 bash -c ' echo "Container started"  trap "exit 0" 15  exec "$@"
   while sleep 1 & wait $!; do :; done
 '
 
@@ -48,7 +48,6 @@ This will create the next directory and place the root files and folders:
 /workspaces/dev-container/
 
 Connect to the running container:
-> Use the next command to connect to the new devcontainer:
 > docker exec -it --user manuel manuel-dev-container-spec bash
 
 
@@ -59,8 +58,7 @@ Build the image:
 > docker build --no-cache -t manuelarias/dev-container:v1 -f .devcontainer-manuel/Dockerfile .
 
 Run the image:
-> docker run -it -d -v /home/dockremap/:/home/manuel/mgallegoa/ --name manuel-dev-container manuelarias/dev-container:v1 bash -c '
-  nvim --headless "+Lazy! sync" +qa  
+> docker run -it -d -v /media/manuel/Datos/mgallegoa/:/home/manuel/mgallegoa/ --name manuel-dev-container manuelarias/dev-container:v1 bash -c '
   echo "Container started"  trap "exit 0" 15  exec "$@"
   while sleep 1 & wait $!; do :; done
 '
@@ -72,8 +70,6 @@ Connect to the running container:
 > [!IMPORTANT]
 >
 > Lazy NeoVim - Afther instalation:
-> 1. Open neovim to auto-install the lazy plugins or run the command:
->    nvim --headless "+Lazy! sync" +qa
 > 2. Run Mason and install (i) the Language Servers LSP:
 >    2.1. css-lsp : vscode-css-languageservice
 >    2.2. eslint_d : eslint_d.js

@@ -25,6 +25,9 @@ RUN chown manuel:manuel /home/manuel/setup.sh && \
 # Switch to user 'manuel'
 USER manuel
 
+RUN mkdir -p /home/manuel/setup-tools
+COPY .devcontainer/setup-tools/ /home/manuel/setup-tools/
+
 # Run the setup
 RUN /home/manuel/setup.sh
 
