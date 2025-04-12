@@ -6,6 +6,7 @@ set -euo pipefail
 export PATH_DOTFILES="$HOME/dotfiles"
 export PATH_DEVCONTAINER_SCRIPT="$HOME/setup-tools"
 export PATH_INSTALL_OPT="/opt/manuel"
+export NODE_VERSION="22.1.0"
 export NVIM_VERSION="v0.10.2"
 export JAVA_VERSION="21.0.6-tem"
 export PATH_WORKSPACE="$HOME/mgallegoa"

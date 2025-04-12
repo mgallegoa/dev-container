@@ -74,31 +74,32 @@ Connect to the running container:
 
 
 > [!IMPORTANT]
->
-> Lazy NeoVim - Mason Plugins:
-> 1. LSP: Run Mason and install (i) the Language Servers LSP:
->    1.1. lua_ls: lua-language-server
->    1.2. cssls : vscode-css-languageservice
->    1.3. html : vscode-html-languageservice
->    1.4. ts_ls : typescript-language-server
->    1.5. jdtls : eclipse.jdt.ls
->
-> 2. DAP
->    2.1. bash : bash
->    2.1. js : vscode-js-debug (js-debug-adapter)
->    2.1. java-debug-adapter : java-debug-adapter
->    2.1. java-test : For support for JUnit/TestNG test debugging
->
-> 3. Linter
->    2.1. eslint_d : eslint_d.js (Linter and Formater)
->    2.2. htmlhint : htmlhint.com
->
-> Formater:
->    2.1. prettierd: prettierd
->    2.2. stylua : StyLua
-
-> 4. For Java, install the java version (using SDKMan):
+> Afther instalation, for Java, install the java version (using SDKMan), example:
 >    sdk install java 21.0.6-tem
+
+
+### Lazy NeoVim - Mason Plugins:
+
+ 1. LSP: Run Mason and install (i) the Language Servers LSP:
+    1.1. lua_ls: lua-language-server
+    1.2. cssls : vscode-css-languageservice
+    1.3. html : vscode-html-languageservice
+    1.4. ts_ls : typescript-language-server
+    1.5. jdtls : eclipse.jdt.ls
+
+ 2. DAP
+    2.1. bash : bash
+    2.1. js : vscode-js-debug (js-debug-adapter)
+    2.1. java-debug-adapter : java-debug-adapter
+    2.1. java-test : For support for JUnit/TestNG test debugging
+
+ 3. Linter
+    2.1. eslint_d : eslint_d.js (Linter and Formater)
+    2.2. htmlhint : htmlhint.com
+
+ Formater:
+    2.1. prettierd: prettierd
+    2.2. stylua : StyLua
 
 
 ### Core Packages Included in debian:slim

@@ -3,6 +3,7 @@
 # e: Exit script on any error. u: treat unset variables as error. o Fail
 set -euo pipefail
 
+export PATH="$PATH:$PATH_INSTALL_OPT/nvm-v0.39.7/versions/node/v$NODE_VERSION/bin"
 echo "*** NVIM-LSP-DAP-LINTERS-FORMATERS: Install LSP using $PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim." | tee -a $HOME/setup.log
 
 echo "NVIM-LSP: Install LSP with Mason Api. lua-language-server, vscode-css-languageservice, vscode-html-languageservice, typescript-language-server, eclipse.jdt.ls." | tee -a $HOME/setup.log
