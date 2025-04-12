@@ -36,7 +36,7 @@ npm i -g @devcontainers/cli
 Build the image:
 > devcontainer build --image-name manuelarias/devcontainer:v1 --workspace-folder /media/manuel/Datos/mgallegoa/dev-container/
 
-Run the image:
+Run the image (Example in my personal laptop):
 > docker run -it -d -v /media/manuel/Datos/mgallegoa/:/home/manuel/mgallegoa/ --name manuel-dev-container-spec manuelarias/dev-container-spec:v1 bash -c ' echo "Container started"  trap "exit 0" 15  exec "$@"
   while sleep 1 & wait $!; do :; done
 '
@@ -57,8 +57,14 @@ Use the .devcontainer-manuel/Dockerfile to build the image.
 Build the image:
 > docker build --no-cache -t manuelarias/dev-container:v1 -f .devcontainer-manuel/Dockerfile .
 
-Run the image:
+Run the image (Example in my personal laptop):
 > docker run -it -d -v /media/manuel/Datos/mgallegoa/:/home/manuel/mgallegoa/ --name manuel-dev-container manuelarias/dev-container:v1 bash -c '
+  echo "Container started"  trap "exit 0" 15  exec "$@"
+  while sleep 1 & wait $!; do :; done
+'
+
+Run the image (Example in Play With Docker PWD):
+> docker run -it -d --name manuel-dev-container manuelarias/dev-container:v1 bash -c '
   echo "Container started"  trap "exit 0" 15  exec "$@"
   while sleep 1 & wait $!; do :; done
 '
@@ -69,19 +75,29 @@ Connect to the running container:
 
 > [!IMPORTANT]
 >
-> Lazy NeoVim - Afther instalation:
-> 2. Run Mason and install (i) the Language Servers LSP:
->    2.1. css-lsp : vscode-css-languageservice
->    2.2. eslint_d : eslint_d.js
->    2.3. html-lsp : vscode-html-languageservice
->    2.4. htmlhint : htmlhint.com
->    2.5. jdtls : eclipse.jdt.ls
->    2.6. js-debug-adapter : vscode-js-debug
->    2.7. lua-language-server: lua-language-server
->    2.8. prettierd: prettierd
->    2.9. stylua : StyLua
->    2.10 typescript-language-server : typescript-language-server
-> 3. For Java, install the java version (using SDKMan):
+> Lazy NeoVim - Mason Plugins:
+> 1. LSP: Run Mason and install (i) the Language Servers LSP:
+>    1.1. lua_ls: lua-language-server
+>    1.2. cssls : vscode-css-languageservice
+>    1.3. html : vscode-html-languageservice
+>    1.4. ts_ls : typescript-language-server
+>    1.5. jdtls : eclipse.jdt.ls
+>
+> 2. DAP
+>    2.1. bash : bash
+>    2.1. js : vscode-js-debug (js-debug-adapter)
+>    2.1. java-debug-adapter : java-debug-adapter
+>    2.1. java-test : For support for JUnit/TestNG test debugging
+>
+> 3. Linter
+>    2.1. eslint_d : eslint_d.js (Linter and Formater)
+>    2.2. htmlhint : htmlhint.com
+>
+> Formater:
+>    2.1. prettierd: prettierd
+>    2.2. stylua : StyLua
+
+> 4. For Java, install the java version (using SDKMan):
 >    sdk install java 21.0.6-tem
 
 

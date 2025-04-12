@@ -3,33 +3,44 @@
 # e: Exit script on any error. u: treat unset variables as error. o Fail
 set -euo pipefail
 
-echo "*** NVIM-LSP: Install LSP using $PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim." | tee -a $HOME/setup.log
-echo "NVIM-LSP: Install LSP with Mason Api. vscode-css-languageservice." | tee -a $HOME/setup.log
-"$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"lua require('mason').setup()" \
-     +"lua require('mason-lspconfig').setup()" \
-     +"lua require('mason-lspconfig').install({ 'cssls' })" +qa
+echo "*** NVIM-LSP-DAP-LINTERS-FORMATERS: Install LSP using $PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim." | tee -a $HOME/setup.log
+
+echo "NVIM-LSP: Install LSP with Mason Api. lua-language-server, vscode-css-languageservice, vscode-html-languageservice, typescript-language-server, eclipse.jdt.ls." | tee -a $HOME/setup.log
+# "$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"lua require('mason').setup()" \
+#      +"lua require('mason-lspconfig').setup({ ensure_installed = { 'lua_ls', 'cssls',  'html', 'ts_ls', 'jdtls' }, automatic_installation = true })" \
+#      +qa
+
+"$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"MasonInstall lua-language-server" +q > /dev/null
+"$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"MasonInstall css-lsp" +q > /dev/null
+"$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"MasonInstall html-lsp" +q > /dev/null
+"$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"MasonInstall typescript-language-server" +q > /dev/null
+"$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"MasonInstall jdtls" +q > /dev/null
+
+echo "NVIM-DAP: Install DAP with Mason Api. bash, js-debug-adapter, java-debug-adapter, java-test." | tee -a $HOME/setup.log
+# "$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"lua require('mason').setup()" \
+#      +"lua require('mason-lspconfig').setup({ ensure_installed = { 'bash', js', 'java-debug-adapter', 'java-test' }, automatic_installation = true })" \
+#      +qa
+
+"$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"MasonInstall bash-debug-adapter" +q > /dev/null
+"$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"MasonInstall js-debug-adapter" +q > /dev/null
+"$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"MasonInstall java-debug-adapter" +q > /dev/null
+"$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"MasonInstall java-test" +q  > /dev/null
 
 
-echo "NVIM-LSP: Install LSP with Mason Api. eslint_d, vscode-html-languageservice, htmlhint." | tee -a $HOME/setup.log
-"$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless -c 'lua require("mason-registry").refresh()' \
-                -c 'lua require("mason-registry").get("eslint_d"):install()' \
-                -c 'lua require("mason-registry").get("vscode-html-languageservice"):install()' \
-                -c 'lua require("mason-registry").get("htmlhint"):install()' \
-                -c 'q'
+echo "NVIM-LINTER: Install LINTER with Mason Api. eslint_d, htmlhint." | tee -a $HOME/setup.log
+# "$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"lua require('mason').setup()" \
+#      +"lua require('mason-lspconfig').setup({ ensure_installed = { 'eslint_d', 'htmlhint' }, automatic_installation = true })" \
+#      +qa
 
-echo "NVIM-LSP: Install LSP with Mason Api. js-debug-adapter, lua-language-server, prettierd, stylua." | tee -a $HOME/setup.log
-"$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless -c 'lua require("mason-registry").refresh()' \
-                -c 'lua require("mason-registry").get("js-debug-adapter"):install()' \
-                -c 'lua require("mason-registry").get("lua-language-server"):install()' \
-                -c 'lua require("mason-registry").get("prettierd"):install()' \
-                -c 'lua require("mason-registry").get("stylua"):install()' \
-                -c 'lua require("mason-registry").get("typescript-language-server"):install()' \
-                -c 'q'
+"$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"MasonInstall eslint_d" +q > /dev/null
+"$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"MasonInstall htmlhint" +q > /dev/null
 
-echo "NVIM-LSP: Install LSP with Mason Api. eclipse.jdt.ls, ." | tee -a $HOME/setup.log
-"$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"lua require('mason').setup()" \
-     +"lua require('mason-lspconfig').setup()" \
-     +"lua require('mason-lspconfig').install({ 'eclipse.jdt.ls' })" +qa
+echo "NVIM-FORMATERs: Install Formatters with Mason Api. prettierd, stylua." | tee -a $HOME/setup.log
+# "$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"lua require('mason').setup()" \
+#      +"lua require('mason-lspconfig').setup({ ensure_installed = { 'prettierd', 'stylua' }, automatic_installation = true })" \
+#      +qa
 
+"$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"MasonInstall prettierd" +q > /dev/null
+"$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"MasonInstall stylua" +q > /dev/null
 
 echo "*** NVIM-LSP : Custom configuration finished." | tee -a $HOME/setup.log
