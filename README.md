@@ -50,6 +50,9 @@ This will create the next directory and place the root files and folders:
 Connect to the running container:
 > docker exec -it --user manuel manuel-dev-container-spec bash
 
+> [!NOTE]
+> This container is hosted in DockerHub: https://hub.docker.com/r/manuelarias/dev-container-spec
+
 
 ## Build/Run the container only from Dockerfile (not use the devContainer specification)
 
@@ -76,6 +79,9 @@ Connect to the running container:
 > [!IMPORTANT]
 > Afther instalation, for Java, install the java version (using SDKMan), example:
 >    sdk install java 21.0.6-tem
+
+> [!NOTE]
+> This container is hosted in DockerHub: https://hub.docker.com/r/manuelarias/dev-container
 
 
 ### Lazy NeoVim - Mason Plugins:
