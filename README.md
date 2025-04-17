@@ -8,7 +8,9 @@
                ╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝░╚═════╝░╚══════╝╚══════╝
 
 My personal and custom dev-container:
+
     1. Using https://github.com/devcontainers/ specification. The specification use the folder .devcontainer to build and run.
+
     2. Using a Docker file to build the image.
 
 > [!TIP]
@@ -77,7 +79,7 @@ Connect to the running container:
 
 
 > [!IMPORTANT]
-> Afther instalation, for Java, install the java version (using SDKMan), example:
+> Afther installation, for Java, install the java version (using SDKMan), example:
 >    sdk install java 21.0.6-tem
 
 > [!NOTE]
@@ -103,7 +105,7 @@ Connect to the running container:
     2.1. eslint_d : eslint_d.js (Linter and Formater)
     2.2. htmlhint : htmlhint.com
 
- Formater:
+ 4. Formater:
     2.1. prettierd: prettierd
     2.2. stylua : StyLua
 
