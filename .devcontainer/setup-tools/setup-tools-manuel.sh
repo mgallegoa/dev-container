@@ -35,6 +35,8 @@ fi
 ################### OH MY POSH
 echo "TOOLS-MANUEL - OH MY POSH: Installing." | tee -a $HOME/setup.log
 curl -s https://ohmyposh.dev/install.sh | bash -s
+mkdir -p '$HOME/.cache/oh-my-posh/themes'
+curl -Lo '$HOME/.cache/oh-my-posh/themes/night-owl.omp.json' 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/refs/heads/main/themes/night-owl.omp.json' 
 
 ################### KITTY
 # NOTE: GUI apps like Kitty won’t run inside the container unless you're forwarding X11 (not common in VS Code DevContainers).
