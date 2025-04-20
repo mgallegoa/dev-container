@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # -e: Exit script on any error. -u: Treat unset variables as error. -o: Fail
 set -euo pipefail
