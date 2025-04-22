@@ -3,7 +3,7 @@
 # e: Exit script on any error. u: treat unset variables as error. o Fail
 set -euo pipefail
 
-if command -v tmux &> /dev/null; then
+if command -v tmux >/dev/null 2>&1; then
   echo "*** TMUX : The program is instaled." | tee -a $HOME/setup.log
 else
   echo "*** TMUX : Cloning to folder $PATH_INSTALL_OPT/tmux-v3.4" | tee -a $HOME/setup.log
