@@ -23,6 +23,7 @@ find $PATH_DEVCONTAINER_SCRIPT -type f -exec chmod +x {} \;
 ################### BASH
 echo "TOOLS-MANUEL - Bash: Create simlink to .bashrc." | tee -a $HOME/setup.log
 ln -sf $PATH_DOTFILES/.bashrc $HOME/.bashrc
+ln -sf $PATH_DOTFILES/.bash_aliases $HOME/.bash_aliases
 mkdir -p $PATH_WORKSPACE
 
 ################### NERD FONTS
