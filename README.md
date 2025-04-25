@@ -69,7 +69,7 @@ Run the image (Example in my personal laptop):
 '
 
 Run the image (Example in Play With Docker PWD):
-> docker run -it -d --name manuel-dev-container manuelarias/dev-container:v1 bash -c '
+> docker run -it -d -v /root/mgallegoa/:/home/manuel/mgallegoa/ --name manuel-dev-container manuelarias/dev-container:v1 bash -c '
   echo "Container started"  trap "exit 0" 15  exec "$@"
   while sleep 1 & wait $!; do :; done
 '
