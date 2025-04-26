@@ -17,4 +17,7 @@ curl -Lo "$CHAFA_VERSION.tar.gz" https://hpjansson.org/chafa/releases/static/$CH
 tar -xzf "$CHAFA_VERSION.tar.gz"
 rm -rf "$CHAFA_VERSION.tar.gz"
 
+echo "ADDITIONAL: Install java version 21.0.6-tem." | tee -a $HOME/setup.log
+sdk install java 21.0.6-tem
+
 echo "ADDITIONAL:: Finished." | tee -a $HOME/setup.log
