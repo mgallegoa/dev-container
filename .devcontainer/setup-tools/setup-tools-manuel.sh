@@ -20,6 +20,11 @@ echo "TOOLS-MANUEL : Assign chown to directory to user manuel: $PATH_INSTALL_OPT
 sudo chown -hR manuel:manuel $PATH_INSTALL_OPT
 find $PATH_DEVCONTAINER_SCRIPT -type f -exec chmod +x {} \;
 
+################### LOCALES
+echo "TOOLS-MANUEL - locales: Generating locales for en_US.UTF-8." | tee -a $HOME/setup.log
+sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen
+locale-gen
+
 ################### BASH
 echo "TOOLS-MANUEL - Bash: Create simlink to .bashrc." | tee -a $HOME/setup.log
 ln -sf $PATH_DOTFILES/.bashrc $HOME/.bashrc
