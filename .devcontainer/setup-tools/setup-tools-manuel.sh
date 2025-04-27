@@ -10,6 +10,7 @@ export NODE_VERSION="22.1.0"
 export NVIM_VERSION="v0.10.2"
 export JAVA_VERSION="21.0.6-tem"
 export PATH_WORKSPACE="$HOME/mgallegoa"
+export CHAFA_VERSION="chafa-1.14.5-1-x86_64-linux-gnu"
 
 echo "** TOOLS-MANUEL: Making all files executable in folder $PATH_DEVCONTAINER_SCRIPT." | tee -a $HOME/setup.log
 
@@ -18,12 +19,12 @@ echo "TOOLS-MANUEL : Directory for optional software user manuel: $PATH_INSTALL_
 sudo mkdir -p $PATH_INSTALL_OPT
 echo "TOOLS-MANUEL : Assign chown to directory to user manuel: $PATH_INSTALL_OPT" | tee -a $HOME/setup.log
 sudo chown -hR manuel:manuel $PATH_INSTALL_OPT
-find $PATH_DEVCONTAINER_SCRIPT -type f -exec chmod +x {} \;
+# find $PATH_DEVCONTAINER_SCRIPT -type f -exec chmod +x {} \;
 
 ################### LOCALES
 echo "TOOLS-MANUEL - locales: Generating locales for en_US.UTF-8." | tee -a $HOME/setup.log
-sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen
-locale-gen
+sudo sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen
+sudo locale-gen
 
 ################### BASH
 echo "TOOLS-MANUEL - Bash: Create simlink to .bashrc." | tee -a $HOME/setup.log
@@ -91,5 +92,11 @@ $PATH_DEVCONTAINER_SCRIPT/setup-nvim.sh
 if [ $? -ne 0 ]; then
   echo "TOOLS-MANUEL - NVIM: Error: setup-nvim.sh failed!" | tee -a $HOME/setup.log
 fi
+
+################## CHAFA - version specifict
+echo "TOOLS-MANUEL - CHAFA: Install chafa to show images in console ANSI standard." | tee -a $HOME/setup.log
+curl -Lo $PATH_INSTALL_OPT/$CHAFA_VERSION.tar.gz https://hpjansson.org/chafa/releases/static/$CHAFA_VERSION.tar.gz
+tar -xzf $PATH_INSTALL_OPT/$CHAFA_VERSION.tar.gz
+rm -rf $PATH_INSTALL_OPT/$CHAFA_VERSION.tar.gz
 
 echo "** TOOLS-MANUEL : Finished." | tee -a $HOME/setup.log
