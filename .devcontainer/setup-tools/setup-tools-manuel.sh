@@ -15,8 +15,9 @@ export CHAFA_VERSION="chafa-1.14.5-1-x86_64-linux-gnu"
 echo "** TOOLS-MANUEL: Making all files executable in folder $PATH_DEVCONTAINER_SCRIPT." | tee -a $HOME/setup.log
 
 ############# opt/manuel : Directory for software used for the user manuel
-echo "TOOLS-MANUEL : Directory for optional software user manuel: $PATH_INSTALL_OPT" | tee -a $HOME/setup.log
+echo "TOOLS-MANUEL : Directory for optional software user manuel: $PATH_INSTALL_OPT, and $PATH_WORKSPACE" | tee -a $HOME/setup.log
 sudo mkdir -p $PATH_INSTALL_OPT
+mkdir -p $PATH_WORKSPACE
 echo "TOOLS-MANUEL : Assign chown to directory to user manuel: $PATH_INSTALL_OPT" | tee -a $HOME/setup.log
 sudo chown -hR manuel:manuel $PATH_INSTALL_OPT
 # find $PATH_DEVCONTAINER_SCRIPT -type f -exec chmod +x {} \;
@@ -30,7 +31,6 @@ sudo locale-gen
 echo "TOOLS-MANUEL - Bash: Create simlink to .bashrc." | tee -a $HOME/setup.log
 ln -sf $PATH_DOTFILES/.bashrc $HOME/.bashrc
 ln -sf $PATH_DOTFILES/.bash_aliases $HOME/.bash_aliases
-mkdir -p $PATH_WORKSPACE
 
 ################### NERD FONTS
 echo "TOOLS-MANUEL - NerdFonts: Call file for NerdFonts configuration." | tee -a $HOME/setup.log
@@ -95,8 +95,8 @@ fi
 
 ################## CHAFA - version specifict
 echo "TOOLS-MANUEL - CHAFA: Install chafa to show images in console ANSI standard." | tee -a $HOME/setup.log
-curl -Lo $PATH_INSTALL_OPT/$CHAFA_VERSION.tar.gz https://hpjansson.org/chafa/releases/static/$CHAFA_VERSION.tar.gz
-tar -xzf $PATH_INSTALL_OPT/$CHAFA_VERSION.tar.gz
-rm -rf $PATH_INSTALL_OPT/$CHAFA_VERSION.tar.gz
+curl -Lo $PATH_INSTALL_OPT/${CHAFA_VERSION}.tar.gz https://hpjansson.org/chafa/releases/static/${CHAFA_VERSION}.tar.gz
+tar -xzf $PATH_INSTALL_OPT/${CHAFA_VERSION}.tar.gz -C $PATH_INSTALL_OPT/
+rm -rf $PATH_INSTALL_OPT/${CHAFA_VERSION}.tar.gz
 
 echo "** TOOLS-MANUEL : Finished." | tee -a $HOME/setup.log
