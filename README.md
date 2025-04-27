@@ -39,9 +39,7 @@ Build the image:
 > devcontainer build --image-name manuelarias/devcontainer:v1 --workspace-folder /media/manuel/Datos/mgallegoa/dev-container/
 
 Run the image (Example in my personal laptop):
-> docker run -it -d -v /media/manuel/Datos/mgallegoa/:/home/manuel/mgallegoa/ --name manuel-dev-container-spec manuelarias/dev-container-spec:v1 bash -c ' echo "Container started"  trap "exit 0" 15  exec "$@"
-  while sleep 1 & wait $!; do :; done
-'
+> docker run -it -d -v /media/manuel/Datos/mgallegoa/:/home/manuel/mgallegoa/ --name manuel-dev-container-spec manuelarias/dev-container-spec:v1 bash -c ' while sleep 1 & wait $!; do :; done'
 
 Build and run the image (not custom name for the image):
 > devcontainer up --build-no-cache --workspace-folder /media/manuel/Datos/mgallegoa/dev-container/
@@ -56,23 +54,17 @@ Connect to the running container:
 > This container is hosted in DockerHub: https://hub.docker.com/r/manuelarias/dev-container-spec
 
 
-## Build/Run the container only from Dockerfile (not use the devContainer specification)
+## Build/Run the container only from Dockerfile (NOT use the devContainer specification)
 
 Use the .devcontainer-manuel/Dockerfile to build the image.
 Build the image:
 > docker build --no-cache -t manuelarias/dev-container:v1 -f .devcontainer-manuel/Dockerfile .
 
 Run the image (Example in my personal laptop):
-> docker run -it -d -v /media/manuel/Datos/mgallegoa/:/home/manuel/mgallegoa/ --name manuel-dev-container manuelarias/dev-container:v1 bash -c '
-  echo "Container started"  trap "exit 0" 15  exec "$@"
-  while sleep 1 & wait $!; do :; done
-'
+> docker run -it -d -v /media/manuel/Datos/mgallegoa/:/home/manuel/mgallegoa/ --name manuel-dev-container manuelarias/dev-container:v1 bash -c ' while sleep 1 & wait $!; do :; done '
 
 Run the image (Example in Play With Docker PWD):
-> docker run -it -d -v /root/mgallegoa/:/home/manuel/mgallegoa/ --name manuel-dev-container manuelarias/dev-container:v1 bash -c '
-  echo "Container started"  trap "exit 0" 15  exec "$@"
-  while sleep 1 & wait $!; do :; done
-'
+> docker run -it -d -v /root/mgallegoa/:/home/manuel/mgallegoa/ --name manuel-dev-container manuelarias/dev-container:v1 bash -c '  while sleep 1 & wait $!; do :; done '
 
 Connect to the running container:
 > docker exec -it --user manuel manuel-dev-container bash
