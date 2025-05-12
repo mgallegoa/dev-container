@@ -39,7 +39,7 @@ Build the image:
 > devcontainer build --image-name manuelarias/devcontainer:v1 --workspace-folder /media/manuel/Datos/mgallegoa/dev-container/
 
 Run the image (Example in my personal laptop):
-> docker run -it -d -v /media/manuel/Datos/mgallegoa/:/home/manuel/mgallegoa/ --name manuel-dev-container-spec manuelarias/dev-container-spec:v1 bash -c ' while sleep 1 & wait $!; do :; done'
+> docker run -it -d -v /media/manuel/Datos/mgallegoa/:/home/manuel/mgallegoa/ -p 8080:4000 -p 8081:3000 --name manuel-dev-container-spec manuelarias/dev-container-spec:v1 bash -c ' while sleep 1 & wait $!; do :; done'
 
 Build and run the image (not custom name for the image):
 > devcontainer up --build-no-cache --workspace-folder /media/manuel/Datos/mgallegoa/dev-container/
