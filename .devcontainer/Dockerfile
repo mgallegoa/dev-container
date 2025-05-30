@@ -16,9 +16,13 @@ ENV DATA_GIT_PROJECTS_DIR="/home/manuel/mgallegoa"
 # 2. automake autoconf libtool pkg-config: To build programs.
 # 3. build-essential libevent-dev libncurses-dev: To build Tmux.
 RUN apt-get update \
-  && apt-get install -y ripgrep fontconfig automake autoconf libtool pkg-config build-essential libevent-dev libncurses-dev bison bash-completion command-not-found locales \
+  && apt-get install -y ripgrep fontconfig automake autoconf libtool pkg-config build-essential libevent-dev libncurses-dev bison bash-completion command-not-found locales tzdata \
   && rm -rf /var/lib/apt/lists/*
 
+# Configure the time zone
+ENV TZ=America/Bogota
+RUN ln -sf /usr/share/zoneinfo/$TZ /etc/localtime \
+    && echo $TZ > /etc/timezone
 
 # Create user 'manuel' with home directory
 RUN useradd -ms /bin/bash manuel \
