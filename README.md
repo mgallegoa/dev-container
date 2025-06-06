@@ -58,13 +58,13 @@ Connect to the running container:
 
 Use the .devcontainer-manuel/Dockerfile to build the image.
 Build the image:
-> docker build --no-cache -t manuelarias/dev-container:v1 -f .devcontainer-manuel/Dockerfile .
+> docker build --no-cache -t manuelarias/dev-container:v2 -f .devcontainer-manuel/Dockerfile .
 
 Run the image (Example in my personal laptop):
-> docker run -it -d -v /media/manuel/Datos/mgallegoa/:/home/manuel/mgallegoa/ -p 8080:4000 -p 8081:3000 --name manuel-dev-container manuelarias/dev-container:v1 bash -c ' while sleep 1 & wait $!; do :; done '
+> docker run -it -d -v /media/manuel/Datos/mgallegoa/:/home/manuel/mgallegoa/ -p 8080:4000 -p 8081:3000 --name manuel-dev-container manuelarias/dev-container:v2 bash -c ' while sleep 1 & wait $!; do :; done '
 
 Run the image (Example in Play With Docker PWD):
-> docker run -it -d -v /home/manuel/mgallegoa/:/home/manuel/mgallegoa/ -p 8080:4000 -p 8081:3000 --name manuel-dev-container manuelarias/dev-container:v1 bash -c '  while sleep 1 & wait $!; do :; done '
+> docker run -it -d -v /home/manuel/mgallegoa/:/home/manuel/mgallegoa/ -p 8080:4000 -p 8081:3000 --name manuel-dev-container manuelarias/dev-container:v2 bash -c '  while sleep 1 & wait $!; do :; done '
 
 Connect to the running container:
 > docker exec -it --user manuel manuel-dev-container bash
