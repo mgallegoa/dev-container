@@ -7,7 +7,7 @@ ENV DATA_GIT_PROJECTS_DIR="/home/manuel/mgallegoa"
 # 2. automake autoconf libtool pkg-config: To build programs.
 # 3. build-essential libevent-dev libncurses-dev: To build Tmux.
 RUN apt-get update \
-  && apt-get install -y sudo git curl ripgrep fontconfig zip unzip automake autoconf libtool pkg-config build-essential libevent-dev libncurses-dev bison bash-completion command-not-found locales tzdata \
+  && apt-get install -y sudo git curl ripgrep fontconfig zip unzip automake autoconf libtool pkg-config build-essential libevent-dev libncurses-dev bison bash-completion command-not-found locales tzdata fd-find jq \
   && rm -rf /var/lib/apt/lists/*
 
 # Configure the time zone
