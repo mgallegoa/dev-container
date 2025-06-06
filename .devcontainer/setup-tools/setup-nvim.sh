@@ -4,11 +4,16 @@
 set -euo pipefail
 
 echo "*** NVIM: downloading prebuild nvim (not source code)." | tee -a $HOME/setup.log
-curl -Lo "$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION.tar.gz" https://github.com/neovim/neovim/releases/download/$NVIM_VERSION/nvim-linux64.tar.gz
+curl -Lo "$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION.tar.gz" https://github.com/neovim/neovim/releases/download/$NVIM_VERSION/nvim-linux-x86_64.tar.gz
+
 echo "NVIM: Unzip in folder $PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION" | tee -a $HOME/setup.log
 tar -xzf "$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION.tar.gz" -C $PATH_INSTALL_OPT/
-mv $PATH_INSTALL_OPT/nvim-linux64 "$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION"
+
+echo "NVIM: Renaming the Nvim folder" | tee -a $HOME/setup.log
+mv $PATH_INSTALL_OPT/nvim-linux-x86_64 "$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION"
+echo "NVIM: Deleting the Nvim tar.gz" | tee -a $HOME/setup.log
 rm "$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION.tar.gz"
+
 echo "NVIM: Creating simlink to config dot files" | tee -a $HOME/setup.log
 mkdir -p "$HOME/.config"
 ln -sf $PATH_DOTFILES/.config/nvim $HOME/.config/

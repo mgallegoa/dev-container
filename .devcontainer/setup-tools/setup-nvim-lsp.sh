@@ -28,13 +28,14 @@ echo "NVIM-DAP: Install DAP with Mason Api. bash, js-debug-adapter, java-debug-a
 "$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"MasonInstall java-test" +q  > /dev/null
 
 
-echo "NVIM-LINTER: Install LINTER with Mason Api. eslint_d, htmlhint." | tee -a $HOME/setup.log
+echo "NVIM-LINTER: Install LINTER with Mason Api. eslint_d, htmlhint, selene." | tee -a $HOME/setup.log
 # "$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"lua require('mason').setup()" \
 #      +"lua require('mason-lspconfig').setup({ ensure_installed = { 'eslint_d', 'htmlhint' }, automatic_installation = true })" \
 #      +qa
 
 "$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"MasonInstall eslint_d" +q > /dev/null
 "$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"MasonInstall htmlhint" +q > /dev/null
+"$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"MasonInstall selene" +q > /dev/null
 
 echo "NVIM-FORMATERs: Install Formatters with Mason Api. prettierd, stylua." | tee -a $HOME/setup.log
 # "$PATH_INSTALL_OPT/nvim-linux64-$NVIM_VERSION/bin/nvim" --headless +"lua require('mason').setup()" \
