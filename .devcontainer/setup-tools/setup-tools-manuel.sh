@@ -99,4 +99,12 @@ curl -Lo $PATH_INSTALL_OPT/${CHAFA_VERSION}.tar.gz https://hpjansson.org/chafa/r
 tar -xzf $PATH_INSTALL_OPT/${CHAFA_VERSION}.tar.gz -C $PATH_INSTALL_OPT/
 rm -rf $PATH_INSTALL_OPT/${CHAFA_VERSION}.tar.gz
 
+################## TERRAFORM
+echo "TOOLS-MANUEL - TERRAFORM: Call file for terraform installation." | tee -a $HOME/setup.log
+$PATH_DEVCONTAINER_SCRIPT/setup-terraform.sh
+if [ $? -ne 0 ]; then
+  echo "TOOLS-MANUEL - TERRAFORM: Error: setup-terraform.sh failed!" | tee -a $HOME/setup.log
+fi
+
+
 echo "** TOOLS-MANUEL : Finished." | tee -a $HOME/setup.log
