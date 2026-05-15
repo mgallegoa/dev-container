@@ -168,6 +168,14 @@ Connect to the running container:
 | less                | Pager for viewing files                  | less file.txt                              | apt-get install less                        |
 | ip (iproute2)       | Network configuration tool               | ip addr show                               | apt-get install iproute2                    |
 
+### Packages add in the creation of the image:
+
+| Tool            | Description                     | Usage                                          | Alternative / How to Install    |
+| --------------- | ------------------------------- | ---------------------------------------------- | ------------------------------- |
+| gpg             | GnuPG to encryption and signing | To build and install new software              | apt-get install gpg             |
+| lsb-release     | Linux Standard Base             | To display version number distributor ID etc   | apt-get install lsb-release     |
+| python3.11-venv | Ubuntu python package           | To isolate virtual environment for Python 3.11 | apt-get install python3.11-venv |
+
 ### Common Linux Folders Explained
 
 | Folder     | Description                                        | Common Uses                                                           |
